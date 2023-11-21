@@ -10,4 +10,14 @@ public class Player {
         this.puntuacion = puntuacion;
         this.vidas = vidas;
     }
+
+    public int getVidas() {
+        return vidas;
+    }
+
+    public void restarVida() {
+        if (vidas > 0) {
+            vidas--;
+        }
+    }
 }

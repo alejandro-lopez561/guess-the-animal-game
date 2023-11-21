@@ -18,6 +18,11 @@ public class Round {
         this.temporizador = new Timer();
     }
 
+    // Método para verificar si la respuesta fue correcta
+    public boolean isRespuestaCorrecta() {
+        return respuestaCorrecta;
+    }
+
     // Método para iniciar una nueva ronda
     public void iniciarNuevaRonda() {
         // Se elige aleatoriamente un animal de la lista
@@ -37,34 +42,30 @@ public class Round {
     }
 
     private Animal elegirAnimalAleatorio() {
-        // Código para seleccionar aleatoriamente un animal de la lista
-        // Puedes utilizar la clase Random para esto
+        // Logica para seleccionar aleatoriamente un animal de la lista
         Random random = new Random();
         int indiceAnimal = random.nextInt(animales.size());
         return animales.get(indiceAnimal);
     }
 
     private void mostrarImagenAnimal(Animal animal) {
-        // Código para mostrar la imagen del animal en la interfaz
-        // Puedes utilizar JavaFX para mostrar la imagen
-        System.out.println("Mostrar imagen del animal: " + animal.getImagenPath());
+        // Logica para mostrar la imagen del animal en la interfaz, por ahora se imprime en consola
+        System.out.println("Animal image: " + animal.getImagenPath());
     }
 
     private void reproducirSonidoAnimal(Animal animal) {
-        // Código para reproducir el sonido del animal
-        // Puedes utilizar JavaFX o alguna biblioteca para reproducir audio
-        System.out.println("Reproducir sonido del animal: " + animal.getSonido());
+        // Logica para reproducir el sonido del animal, por ahora se imprime en consola
+        System.out.println("Animal sound: " + animal.getSonido());
     }
 
     private void iniciarTemporizador() {
         // Código para iniciar el temporizador
-        // Puedes utilizar la clase TimerTask y Timer para esto
         temporizador.schedule(new TimerTask() {
             @Override
             public void run() {
-                // Lógica para manejar cuando se acaba el tiempo
-                System.out.println("¡Tiempo agotado!");
-                // Puedes implementar la lógica para reducir vidas o marcar la respuesta como incorrecta
+                // Lógica para manejar cuando se acaba el tiempo, por ahora se imprime en consola al acabarse los 10 segundos
+                System.out.println("Time is Over! You lost 1 life :(");
+                respuestaCorrecta = false;
             }
         }, tiempoLimite * 1000);
     }
